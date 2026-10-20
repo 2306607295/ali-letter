@@ -683,28 +683,46 @@ body{
 </script>
 
 <!-- 背景音乐自动播放 -->
-<audio id="bgm" loop style="display:none;">
+<audio id="bgm" loop muted style="display:none;">
   <source src="bgm.mp3" type="audio/mpeg">
 </audio>
 
 <script>
 (function() {
   const audio = document.getElementById('bgm');
-  let hasStarted = false;
 
-  function startAudio() {
-    if (!hasStarted) {
-      audio.play().catch(function(err) {
-        console.log('音乐播放失败:', err);
-      });
-      hasStarted = true;
-      document.removeEventListener('click', startAudio);
-      document.removeEventListener('touchstart', startAudio);
+  // 尝试自动播放
+  function tryAutoPlay() {
+    const playPromise = audio.play();
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => {
+          // 自动播放成功，取消静音
+          setTimeout(() => {
+            audio.muted = false;
+          }, 500);
+        })
+        .catch(err => {
+          console.log('自动播放失败，等待用户交互:', err);
+          // 如果自动播放失败，监听用户第一次交互
+          function startOnInteraction() {
+            audio.muted = false;
+            audio.play().catch(e => console.log(e));
+            document.removeEventListener('click', startOnInteraction);
+            document.removeEventListener('touchstart', startOnInteraction);
+          }
+          document.addEventListener('click', startOnInteraction);
+          document.addEventListener('touchstart', startOnInteraction);
+        });
     }
   }
 
-  document.addEventListener('click', startAudio);
-  document.addEventListener('touchstart', startAudio);
+  // 页面加载完成后尝试播放
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', tryAutoPlay);
+  } else {
+    tryAutoPlay();
+  }
 })();
 </script>
 
