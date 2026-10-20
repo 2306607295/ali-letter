@@ -24,6 +24,59 @@
   --transition-fast:150ms cubic-bezier(.4,0,.2,1);
   --transition-smooth:300ms cubic-bezier(.22,1,.36,1);
 }
+
+/* 密码保护层 */
+#password-overlay{
+  position:fixed;inset:0;z-index:9999;background:var(--ink);display:flex;align-items:center;justify-content:center;
+}
+
+.password-container{
+  text-align:center;max-width:400px;padding:40px;
+}
+
+.password-container h1{
+  font-size:2.5em;letter-spacing:.2em;margin-bottom:20px;color:var(--paper);
+}
+
+.password-container p{
+  font-size:1.1em;color:var(--paper-dim);margin-bottom:40px;line-height:1.8;
+}
+
+.password-hint{
+  font-size:0.95em;color:var(--frost);margin-bottom:30px;letter-spacing:.1em;
+}
+
+.password-input{
+  width:100%;padding:14px 16px;font-size:1em;
+  background:var(--ink-2);border:1px solid var(--line);
+  color:var(--paper);font-family:inherit;
+  letter-spacing:.1em;margin-bottom:16px;
+  border-radius:4px;transition:all var(--transition-fast);
+}
+
+.password-input:focus{
+  outline:none;border-color:var(--vermil);box-shadow:0 0 8px rgba(200,90,71,.3);
+}
+
+.password-btn{
+  width:100%;padding:12px;font-size:1em;
+  background:var(--vermil);color:var(--paper);border:none;
+  cursor:pointer;font-family:inherit;letter-spacing:.1em;
+  border-radius:4px;transition:all var(--transition-fast);
+}
+
+.password-btn:hover{
+  background:var(--vermil-soft);box-shadow:0 4px 12px rgba(200,90,71,.4);
+}
+
+.password-error{
+  color:#d46666;font-size:0.9em;margin-top:16px;min-height:20px;
+}
+
+#content{
+  display:none;
+}
+</style>
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
@@ -264,6 +317,21 @@ body{
 </style>
 </head>
 <body>
+
+<!-- 密码保护层 -->
+<div id="password-overlay">
+  <div class="password-container">
+    <h1>写给阿黎</h1>
+    <p>这是一封特别的情书</p>
+    <div class="password-hint">提示：阿黎</div>
+    <input type="password" id="password-input" class="password-input" placeholder="请输入密码" />
+    <button class="password-btn" onclick="checkPassword()">进入</button>
+    <div class="password-error" id="error-msg"></div>
+  </div>
+</div>
+
+<!-- 真实内容 -->
+<div id="content">
 
 <div class="grain" aria-hidden="true"></div>
 <canvas id="snow" aria-hidden="true"></canvas>
@@ -724,6 +792,78 @@ body{
     tryAutoPlay();
   }
 })();
+</script>
+
+</div><!-- 内容结束 -->
+
+<!-- 背景音乐自动播放 -->
+<audio id="bgm" loop muted style="display:none;">
+  <source src="bgm.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+// 密码验证逻辑
+function checkPassword() {
+  const input = document.getElementById('password-input').value;
+  const correctPassword = '1101';
+  const errorMsg = document.getElementById('error-msg');
+
+  if (input === correctPassword) {
+    document.getElementById('password-overlay').style.display = 'none';
+    document.getElementById('content').style.display = 'block';
+    errorMsg.textContent = '';
+    startMusic();
+    localStorage.setItem('ali-letter-unlocked', 'true');
+  } else {
+    errorMsg.textContent = '密码错误，请重试';
+    document.getElementById('password-input').value = '';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const input = document.getElementById('password-input');
+  if (input) {
+    input.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        checkPassword();
+      }
+    });
+  }
+
+  if (localStorage.getItem('ali-letter-unlocked') === 'true') {
+    document.getElementById('password-overlay').style.display = 'none';
+    document.getElementById('content').style.display = 'block';
+    startMusic();
+  }
+});
+
+function startMusic() {
+  const audio = document.getElementById('bgm');
+
+  function tryAutoPlay() {
+    const playPromise = audio.play();
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => {
+          setTimeout(() => {
+            audio.muted = false;
+          }, 500);
+        })
+        .catch(err => {
+          function startOnInteraction() {
+            audio.muted = false;
+            audio.play().catch(e => console.log(e));
+            document.removeEventListener('click', startOnInteraction);
+            document.removeEventListener('touchstart', startOnInteraction);
+          }
+          document.addEventListener('click', startOnInteraction);
+          document.addEventListener('touchstart', startOnInteraction);
+        });
+    }
+  }
+
+  tryAutoPlay();
+}
 </script>
 
 </body>
