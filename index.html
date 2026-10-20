@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="连世疆致卫上黎的一封跨越两世的情书">
+<title>如故 · 连世疆致卫上黎</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%230e1116'/%3E%3Ctext x='16' y='23' font-size='20' text-anchor='middle' fill='%23b8493a' font-family='serif'%3E连%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://miaoda.feishu.cn" crossorigin>
+<link rel="dns-prefetch" href="https://miaoda.feishu.cn">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap"></noscript>
+<style>
+:root{
+  --ink:#0b0d11;
+  --ink-2:#11141b;
+  --ink-3:#171b23;
+  --paper:#ede8dd;
+  --paper-dim:#9d9589;
+  --frost:#a9bcc8;
+  --vermil:#c85a47;
+  --vermil-soft:#d89966;
+  --line:rgba(237,232,221,.12);
+  --transition-fast:150ms cubic-bezier(.4,0,.2,1);
+  --transition-smooth:300ms cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--ink);
+  color:var(--paper);
+  font-family:"Noto Serif SC","Songti SC","STSong","SimSun",serif;
+  line-height:1.9;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  -webkit-text-size-adjust:100%;
+  text-rendering:optimizeLegibility;
+}
+::selection{background:rgba(200,90,71,.6);color:#ede8dd}
+:focus-visible{outline:2px solid var(--vermil-soft);outline-offset:2px}
+
+/* ---------- 固定装饰层 ---------- */
+.grain{
+  position:fixed;inset:0;z-index:4;pointer-events:none;opacity:.04;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode:overlay;
+  will-change:opacity;
+}
+#snow{position:fixed;inset:0;z-index:3;pointer-events:none;backface-visibility:hidden}
+#progress{
+  position:fixed;top:0;left:0;height:3px;width:0%;
+  background:linear-gradient(90deg,var(--vermil),var(--vermil-soft));z-index:30;
+  transition:width .15s linear;box-shadow:0 0 8px rgba(200,90,71,.4);
+}
+
+/* ---------- 首屏 ---------- */
+.hero{
+  position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;
+  text-align:center;overflow:hidden;
+  background:#0b0d11;
+}
+.hero-bg{
+  position:absolute;inset:0;z-index:1;
+  background:
+    radial-gradient(130% 90% at 50% -10%, #243347 0%, #141f2d 45%, #0b0d11 100%);
+}
+.hero-moon{
+  position:absolute;top:11%;right:16%;width:96px;height:96px;border-radius:50%;z-index:1;
+  background:radial-gradient(circle at 40% 36%, #faf6ed 0%, #dcd4c0 55%, rgba(220,212,192,0) 74%);
+  filter:blur(.5px);opacity:.85;
+  box-shadow:0 0 100px 40px rgba(237,232,221,.14),inset -2px -2px 8px rgba(0,0,0,.3);
+}
+.hero-wall{
+  position:absolute;left:0;right:0;bottom:-2px;z-index:1;display:block;width:100%;height:auto;
+  backface-visibility:hidden;
+}
+.hero-bg::after{
+  content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(180deg,rgba(9,11,15,.38) 0%,rgba(9,11,15,.58) 45%,rgba(9,11,15,.85) 78%,var(--ink) 100%),
+    radial-gradient(120% 90% at 50% 30%,rgba(9,11,15,.12) 0%,rgba(9,11,15,.68) 100%);
+}
+.hero-inner{position:relative;z-index:2;padding:88px 24px 120px;max-width:56em;width:100%;animation:fadeInUp .8s ease-out}
+.hero-seal{margin-bottom:34px;animation:float 3.2s ease-in-out infinite}
+.hero-main{display:flex;justify-content:center;gap:clamp(14px,3vw,34px);align-items:baseline}
+.hero-main .to{font-size:clamp(18px,3.4vw,30px);letter-spacing:.6em;color:var(--paper-dim);writing-mode:vertical-rl;text-orientation:mixed;margin-right:.3em}
+.hero-main .name{
+  font-size:clamp(54px,12vw,120px);font-weight:900;letter-spacing:.16em;
+  color:var(--paper);text-shadow:0 4px 24px rgba(0,0,0,.75);
+}
+.hero-epi{
+  margin-top:40px;font-size:clamp(13px,2.2vw,17px);letter-spacing:.42em;color:var(--paper-dim);
+  font-weight:500;line-height:1.8;
+}
+.hero-by{
+  margin-top:26px;font-size:clamp(12px,2vw,14px);letter-spacing:.5em;color:var(--frost);
+}
+.hero-cta{
+  margin-top:52px;display:inline-block;
+  font-family:inherit;font-size:14px;letter-spacing:.5em;text-indent:.5em;
+  color:var(--paper);background:rgba(200,90,71,.12);
+  border:1.5px solid rgba(216,153,102,.6);padding:14px 34px 14px 40px;cursor:pointer;
+  transition:all var(--transition-fast);border-radius:2px;
+}
+.hero-cta:hover{background:var(--vermil);color:#fff;border-color:var(--vermil);box-shadow:0 8px 24px rgba(200,90,71,.3)}
+.hero-cta:active{transform:scale(.98)}
+.scroll-cue{
+  position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:2;
+  color:var(--paper-dim);font-size:12px;letter-spacing:.4em;text-indent:.4em;
+}
+.scroll-cue::after{content:"↓";display:block;margin-top:8px;font-size:14px;color:var(--vermil-soft);animation:cue 2.2s ease-in-out infinite}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes cue{0%,100%{transform:translateY(0);opacity:.5}50%{transform:translateY(8px);opacity:1}}
+
+/* ---------- 信笺正文 ---------- */
+.letter{
+  position:relative;z-index:5;max-width:46em;margin:0 auto;padding:0 26px;
+  background-image:repeating-linear-gradient(90deg,
+    rgba(237,232,221,.02) 0 1px, transparent 1px 60px);
+}
+.chapter{padding:clamp(64px,11vw,120px) 0 0}
+.vert-tag{
+  position:relative;display:block;margin-bottom:28px;
+  padding-left:20px;
+  writing-mode:horizontal-tb;text-orientation:mixed;
+  color:var(--paper);
+  font-size:clamp(19px,3.2vw,27px);font-weight:700;letter-spacing:.2em;line-height:1.4;
+}
+.vert-tag::before{
+  content:"";position:absolute;left:0;top:.22em;bottom:.22em;width:3px;
+  background:var(--vermil);border-radius:1px;transition:background var(--transition-smooth);
+}
+.vert-tag:hover::before{background:var(--vermil-soft)}
+.vert-tag small{
+  display:block;margin-top:9px;
+  font-size:clamp(12px,1.8vw,14px);font-weight:400;
+  color:var(--frost);letter-spacing:.24em;line-height:1.7;
+}
+.lede{
+  font-size:clamp(17px,2.1vw,20px);line-height:2.1;letter-spacing:.02em;
+  color:#f0ebe0;
+}
+.lede p{margin-bottom:1.2em;text-align:justify;hyphens:auto}
+.lede em{font-style:normal;color:var(--paper);font-weight:600}
+.lede .verm{color:var(--vermil-soft);font-weight:600}
+.gold{
+  margin:clamp(30px,5vw,52px) auto 0;text-align:center;
+  font-size:clamp(22px,4.2vw,36px);font-weight:900;line-height:1.6;letter-spacing:.06em;
+  color:var(--paper);animation:slideIn .6s ease-out .2s both;
+}
+.gold::before,.gold::after{content:"";display:block;width:56px;height:1px;background:var(--vermil);margin:18px auto;opacity:.7;transition:all var(--transition-smooth)}
+.gold:hover::before,.gold:hover::after{width:80px;opacity:.9}
+.gold small{display:block;font-size:.46em;font-weight:400;color:var(--paper-dim);letter-spacing:.24em;margin-top:14px}
+@keyframes slideIn{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:none}}
+
+/* 信笺原句 */
+.letter-quote{
+  margin:clamp(30px,5vw,46px) 0;padding:26px 26px 22px;
+  background:rgba(23,27,35,.4);border:1px solid var(--line);
+  position:relative;border-radius:2px;transition:all var(--transition-smooth);
+  backdrop-filter:blur(2px);
+}
+.letter-quote:hover{background:rgba(23,27,35,.55);border-color:rgba(216,153,102,.4);box-shadow:inset 0 0 12px rgba(200,90,71,.08)}
+.letter-quote .qtext{
+  font-size:clamp(15px,2vw,17.5px);line-height:2.1;color:#eae5db;letter-spacing:.02em;
+}
+.letter-quote .qsign{
+  margin-top:16px;text-align:right;font-size:clamp(15px,2.2vw,18px);
+  color:var(--vermil-soft);font-weight:700;letter-spacing:.3em;
+}
+
+/* 章节 */
+.fig-caption{text-align:center;font-size:12px;color:var(--paper-dim);letter-spacing:.32em;margin-top:12px}
+
+/* 她说 / 我记 */
+.rows{margin:clamp(26px,4vw,40px) 0 0;border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:3.2em 1fr;gap:14px;padding:22px 0;border-bottom:1px solid var(--line);transition:background var(--transition-fast)}
+.row:hover{background:rgba(200,90,71,.04)}
+.row .who{color:var(--vermil-soft);font-size:13px;letter-spacing:.4em;font-weight:700;padding-top:.35em}
+.row .say{color:var(--frost);margin-bottom:.5em;font-size:15.5px;font-weight:500}
+.row .keep{color:#f0ebe0;font-size:clamp(16px,2vw,18.5px);line-height:2}
+
+/* 彼岸 */
+.final{
+  position:relative;margin-top:clamp(70px,12vw,120px);
+  min-height:78vh;display:flex;align-items:center;justify-content:center;
+  background:
+    linear-gradient(180deg, rgba(11,13,17,0) 0%, rgba(11,13,17,.1) 55%, rgba(11,13,17,.7) 100%),
+    linear-gradient(100deg,
+      rgba(130,48,42,.5) 0%,
+      rgba(88,38,42,.35) 32%,
+      rgba(48,62,78,.25) 62%,
+      rgba(200,208,212,.2) 100%);
+}
+@media (max-width:768px){.final{background-attachment:scroll}}
+.final::before{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,var(--ink) 0%,rgba(10,12,16,.5) 40%,rgba(10,12,16,.8) 100%);
+}
+.final-inner{position:relative;z-index:2;max-width:44em;padding:96px 26px;text-align:center}
+
+/* 落款 */
+.colophon{
+  position:relative;z-index:5;text-align:center;
+  padding:clamp(80px,12vw,130px) 26px 90px;
+}
+.colophon .big{
+  font-size:clamp(44px,10vw,92px);font-weight:900;letter-spacing:.14em;color:var(--paper);
+  animation:scaleIn .8s ease-out .4s both;
+}
+.colophon .obey{
+  margin-top:26px;font-size:clamp(19px,3.2vw,27px);color:var(--vermil-soft);
+  letter-spacing:.28em;font-weight:700;
+  animation:fadeIn .8s ease-out .6s both;
+}
+.colophon .sig{margin-top:44px;font-size:clamp(15px,2.4vw,19px);letter-spacing:.4em;color:var(--paper-dim)}
+.colophon .snowline{
+  margin-top:18px;font-size:clamp(13px,2vw,15px);letter-spacing:.34em;color:var(--frost);
+}
+.seal{display:inline-block;margin-top:30px;transition:transform var(--transition-smooth);animation:fadeIn .8s ease-out .5s both}
+.seal:hover{transform:scale(1.08) rotate(2deg)}
+.colophon .tail{margin-top:34px;font-size:12px;letter-spacing:.3em;color:var(--paper-dim);opacity:.6}
+
+/* 滚动显现 */
+[data-reveal]{opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1s cubic-bezier(.22,1,.36,1)}
+[data-reveal].in{opacity:1;transform:none}
+
+@keyframes scaleIn{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  [data-reveal]{opacity:1;transform:none;transition:none}
+  .scroll-cue::after{animation:none}
+  .hero-seal,.hero-cta:hover,.hero-main .name{animation:none;transform:none}
+  .gold:hover::before,.gold:hover::after{width:56px}
+}
+
+@media (max-width:768px){
+  .hero-main{flex-direction:row;align-items:baseline;gap:clamp(8px,2vw,14px)}
+  .row{grid-template-columns:2.4em 1fr;gap:10px;padding:18px 0}
+  .letter{padding:0 18px}
+  .lede{font-size:16px;line-height:2}
+  .seal{margin-top:24px}
+}
+@media (max-width:520px){
+  .hero-epi{margin-top:32px;line-height:1.7}
+  .hero-cta{padding:12px 28px 12px 32px;font-size:13px}
+  .chapter{padding:48px 0 0}
+  .vert-tag{margin-bottom:20px;padding-left:16px}
+  .vert-tag::before{width:2.5px}
+  .row{grid-template-columns:2.2em 1fr;gap:8px;padding:16px 0}
+  .row .say{font-size:14.5px}
+  .row .keep{font-size:16px;line-height:1.9}
+  .letter-quote{padding:20px 20px 18px;margin:24px 0}
+  .gold{margin:24px auto 0}
+}
+@media print{
+  body{background:#fff;color:#111}
+  .grain,#snow,#progress,.hero-bg{display:none}
+  .hero{min-height:auto;background:#fff}
+}
+</style>
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+<canvas id="snow" aria-hidden="true"></canvas>
+<div id="progress" aria-hidden="true"></div>
+
+<!-- ===== 首屏 ===== -->
+<header class="hero">
+  <div class="hero-bg" role="img" aria-label="陇平雪夜城墙">
+    <div class="hero-moon" aria-hidden="true"></div>
+    <svg class="hero-wall" viewBox="0 0 1440 230" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+      <path d="M0 150 L130 108 L270 138 L430 96 L570 130 L720 100 L880 134 L1040 104 L1200 134 L1340 112 L1440 138 L1440 230 L0 230 Z" fill="#0d1219"/>
+      <rect x="0" y="162" width="1440" height="68" fill="#07090d"/>
+      <g fill="#07090d">
+        <rect x="0" y="150" width="22" height="14"/><rect x="48" y="150" width="22" height="14"/>
+        <rect x="96" y="150" width="22" height="14"/><rect x="144" y="150" width="22" height="14"/>
+        <rect x="192" y="150" width="22" height="14"/><rect x="240" y="150" width="22" height="14"/>
+        <rect x="288" y="150" width="22" height="14"/><rect x="336" y="150" width="22" height="14"/>
+        <rect x="384" y="150" width="22" height="14"/><rect x="432" y="150" width="22" height="14"/>
+        <rect x="480" y="150" width="22" height="14"/><rect x="528" y="150" width="22" height="14"/>
+        <rect x="576" y="150" width="22" height="14"/><rect x="624" y="150" width="22" height="14"/>
+        <rect x="672" y="150" width="22" height="14"/><rect x="720" y="150" width="22" height="14"/>
+        <rect x="768" y="150" width="22" height="14"/><rect x="816" y="150" width="22" height="14"/>
+        <rect x="864" y="150" width="22" height="14"/><rect x="912" y="150" width="22" height="14"/>
+        <rect x="960" y="150" width="22" height="14"/><rect x="1008" y="150" width="22" height="14"/>
+        <rect x="1056" y="150" width="22" height="14"/><rect x="1104" y="150" width="22" height="14"/>
+        <rect x="1152" y="150" width="22" height="14"/><rect x="1200" y="150" width="22" height="14"/>
+        <rect x="1248" y="150" width="22" height="14"/><rect x="1296" y="150" width="22" height="14"/>
+        <rect x="1344" y="150" width="22" height="14"/><rect x="1392" y="150" width="22" height="14"/>
+      </g>
+      <g>
+        <rect x="662" y="112" width="116" height="40" fill="#07090d"/>
+        <path d="M646 112 L720 82 L794 112 Z" fill="#07090d"/>
+        <rect x="706" y="126" width="28" height="26" fill="#0b0d11"/>
+      </g>
+    </svg>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-seal">
+      <svg class="seal" width="64" height="64" viewBox="0 0 64 64" aria-hidden="true">
+        <rect x="2" y="2" width="60" height="60" rx="6" fill="#a83a2c"/>
+        <rect x="7" y="7" width="50" height="50" rx="3" fill="none" stroke="#e8d9c8" stroke-width="1.5"/>
+        <text x="32" y="42" text-anchor="middle" font-size="30" fill="#f3e9da" font-family="'Noto Serif SC',serif" font-weight="700">连</text>
+      </svg>
+    </div>
+    <div class="hero-main">
+      <span class="to">致</span>
+      <h1 class="name">卫上黎</h1>
+    </div>
+    <p class="hero-epi" data-reveal>此岸为生灭，彼岸为不灭的涅槃<br>十年五载，两世流离，相思如故</p>
+    <p class="hero-by" data-reveal>陇平 · 连世疆 谨启</p>
+    <button class="hero-cta" id="openBtn" type="button">启封</button>
+  </div>
+  <div class="scroll-cue" aria-hidden="true">往下，读信</div>
+</header>
+
+<!-- ===== 信笺 ===== -->
+<main class="letter">
+
+  <!-- 信首 -->
+  <section class="chapter" id="letter-head">
+    <div data-reveal>
+      <p class="lede">
+        卫上黎：<br><br>
+        见字如晤。<br><br>
+        这封信，我写了很久，久到跨过两辈子。上辈子我写过一封，落款只写了一个“连”字，寄给你；有些话，我没敢写进去，也没有机会再说。<br><br>
+        今夜陇平的雪落得很大。我倚着城墙，忽然想把那些你从来不知道的事，一句一句，说给你听。<br><br>
+        你只说过一句话给我，我便记了两辈子。剩下的，都由我来说完。
+      </p>
+    </div>
+  </section>
+
+  <!-- 壹 · 初见 -->
+  <section class="chapter">
+    <h2 class="vert-tag" data-reveal>壹 · 初见<small>你不知道，我的心早已认得你</small></h2>
+    <div data-reveal>
+      <p class="lede">
+        至业十六年的腊月，我随妹妹弟弟初到煜阳。那日满城风雪覆满宫檐，皇城内唯有白梅还在绽放。我在书院廊下遇见你，衣上带着若有若无的药味。<br><br>
+        你像玥楼一样，是过于张扬而鲜明的人。可我的心，在那一瞬蓦然动了一下。<em>是情感，不是情绪。</em><br><br>
+        那个想法清清楚楚地属于我——它源自于我自己。<span class="verm">好在意，在意她。</span><br><br>
+        冥冥之中好像真的有宿命，在我耳边低语，告诉我早就应该站在这里。不是煜阳，不是皇宫，而是<em>你的身后</em>——抬手便能拨过人耳旁鬓发的位置。<br><br>
+        后来某夜宵禁，我在宫门前踉跄着扶住你。你惊了惊，慌忙甩开我的手，像鹰隼一样睨着我，旋身消失在夜色里。<br><br>
+        我张了张口，唤你——<span class="verm">“阿黎”。</span><br><br>
+        可那时，我还不知道你的名字。<br><br>
+        你不知道这件事。连我自己，都不知道我为什么会知道你的名字。<br><br>
+        直到很久以后，我才于所有纷乱的情感之中，抽出一个最完整的词来——<em>我爱你。</em>并非一眼定心，更像是，我在过往半生长久而渺远的回忆里，终于想起来一件忘记很久的事。
+      </p>
+    </div>
+    <p class="gold" data-reveal>我的心忘了你<br>却一直记得，怎么爱你</p>
+  </section>
+
+  <!-- 贰 · 那封信 -->
+  <section class="chapter">
+    <h2 class="vert-tag" data-reveal>贰 · 那封信与那一程<small>你不知道，我曾走了千里来见你</small></h2>
+    <div data-reveal>
+      <p class="lede">
+        至业二十一年的深冬，我在陇平城墙上，写下给你的第一封信。那夜边关很冷，我把炭笔在墙面上划尖，一字一字地写——
+      </p>
+    </div>
+    <div class="letter-quote" data-reveal>
+      <p class="qtext">
+        在煜阳时闻女公子身体不适，不知如今安否。<br>
+        余曾随太傅廊下论诗，诵《子衿》篇，有城阙之句，遂念君。<br>
+        前次于宗学之事，余尚未有机会正式同女公子致歉，故借此信表吾歉意。<br>
+        不知何故，余总觉此时，君亦当居高临远。<br>
+        愿如风有信，愿故人相与，再会。
+      </p>
+      <p class="qsign">连</p>
+    </div>
+    <div data-reveal>
+      <p class="lede">
+        落款时，我垂了垂眸，只写了一个字。<br><br>
+        一个月后，你的回信自东华而来，只有八个字：<span class="verm">“要道歉便当面道歉。”</span><br><br>
+        你说要当面道歉。陇平与东华相隔千里，我当月便备了车马启程。整整一月，我像失了心的魂魄，归意似箭。<br><br>
+        至卫府那夜，已近子时。我叩开你的房门，一月来第一次开口，声色微哑：<br>
+        <em>“我、我……我在陇平写了信。”</em><br>
+        <em>“……你说了、来见你。”</em><br><br>
+        你后来笑话我格式与落款写得七零八落，让我去找你学写信。你不知道——那是两辈子里，我第一次心甘情愿，被人这样牵着走。
+      </p>
+    </div>
+    <p class="gold" data-reveal>你说要当面道歉<br>我便走了千里来见你</p>
+  </section>
+
+  <!-- 叁 · 守夜 -->
+  <section class="chapter">
+    <h2 class="vert-tag" data-reveal>叁 · 守夜<small>你不知道，我整夜未眠</small></h2>
+    <div data-reveal>
+      <p class="lede">
+        那一夜你赶我回去，我站在门外，低声说：<em>“不是怕府上的下人再放了什么歹人进来吗？你睡下，我在外面，替你守一夜，好吗？”</em><br><br>
+        你滞了滞，点了点头。<br><br>
+        你睡下之后，我在廊下站了一整夜。夜很静，我能听见你浅浅的呼吸声。我舍不得走，便在青石地砖上，用指尖轻轻地画你名中的那个“黎”字——一撇，一捺，再一撇。我画了整整一夜。<br><br>
+        辰时前，我从侧门离开。<br><br>
+        <em>除了你，没有人知道连世疆来过。</em><br><br>
+        可阿黎，你不知道的是——这件事，我上辈子，也做过。<br><br>
+        回到陇平之后，我身边无一日没有太后的眼线。我见不了你，护不了你，甚至不敢让人知道我还在乎你。每一个忍不住的夜晚，我都等你入睡之后，偷偷看你一眼，替你守一夜。<br><br>
+        那是那几年里，我唯一敢爱你的方式。
+      </p>
+    </div>
+    <p class="gold" data-reveal>你睡着的时候，门外永远有人<br><small>前世如此，今生亦然</small></p>
+  </section>
+
+  <!-- 肆 · 白梅 -->
+  <section class="chapter">
+    <h2 class="vert-tag" data-reveal>肆 · 白梅<small>你不知道，煜阳少了一个人</small></h2>
+    <div data-reveal>
+      <p class="lede">
+        至业二十一年冬，我第二次启程去煜阳。白梅花开得像盛夏的月季那样锦簇，甚至压弯了黑褐色的枝。可那一次，你因病留在了东华，并未与我们相见。<br><br>
+        我站在宗学的廊下，总觉得哪里不对。<br><br>
+        后来我想明白了——你没见到她，所以总觉得，煜阳落着雪的金楼玉阙间，少了什么。<br><br>
+        白梅开得那样好。可你不来，它们都像是白开了。<br><br>
+        那一年，我学会了想一个人。想一个人，就是明明什么都好好的，却总觉得缺了一块，怎么也填不上。
+      </p>
+    </div>
+    <p class="gold" data-reveal>你不来<br>煜阳的白梅，都像是白开了</p>
+  </section>
+
+  <!-- 伍 · 前世 -->
+  <section class="chapter">
+    <h2 class="vert-tag" data-reveal>伍 · 前世<small>你不知道，我爱你，比你看见的早了一辈子</small></h2>
+    <div data-reveal>
+      <p class="lede">
+        阿黎，接下来这些话，是我最想让你知道的，也是我最怕让你知道的。<br><br>
+        上辈子，那个辜负了你、害你含恨而终的人，<span class="verm">是我。</span><br><br>
+        你恨得对。我负过你，这一笔，我认。可你不知道的是——<br><br>
+        那夜宫变，我被太后所擒，酷刑加身，几近丧命。太后拿你逼我，要你入宫。我知道她早晚也要对卫氏动手，于是我<em>服毒明志</em>：我说我不爱你，说我娶你，只是要利用卫氏。<br><br>
+        那句话，是说给太后听的，是说给满朝听的，是说给天下听的。<br><br>
+        只有说了那句话，你才能活着。<br><br>
+        回到陇平之后，我身边无一日没有太后的眼线。我娶了你，却不能见你；我日日想你，却只能等你睡着之后，偷偷看你一眼，替你守一夜。那些年里，我把爱你，藏成了一件只有夜知道的事。<br><br>
+        后来卫氏起兵，我入了义军。阿黎，我是真想赢的。可我知道那场仗赢不了，卫氏必灭。<br><br>
+        我开城门，不是背叛卫氏——我是想用自己这条命，给陇平换一条退路。我知道我哥会以谋逆之名杀我，届时陇平百年无忧；而你既已算连氏人，你能活。<br><br>
+        我以为这样，就足够保全你了。<br><br>
+        可我没想到，你在东华，含恨病逝。<br><br>
+        直到你病逝的那一年，我都没能再去东华见你一面。<br><br>
+        这意味着——<em>一直到死，你都未曾亲耳听见我的解释。</em><br><br>
+        这是我两辈子，最深的遗憾。<br><br>
+        上辈子，我总把“爱你”挂在嘴边，说了一辈子，可到底，我用行动辜负了你。这辈子你不让我说情话，我便只说“我听你的”——但阿黎，那句话底下藏着的，还是那句我上辈子没能守住的爱。<br><br>
+        <em>你本就是我爱的人。跨越一世，哪怕我再也回想不起曾经的分毫，我的心间，依旧完整地保留着这份爱——不曾消减。</em>
+      </p>
+    </div>
+    <p class="gold" data-reveal>一直到死，我都想亲口对你说一句<br>我爱你</p>
+  </section>
+
+  <!-- 陆 · 你说过的话 -->
+  <section class="chapter">
+    <h2 class="vert-tag" data-reveal>陆 · 你说过的话，我都记得<small>你不知道，我记了多久</small></h2>
+    <div class="rows" data-reveal>
+      <div class="row">
+        <span class="who">你说</span>
+        <div>
+          <p class="say">“我要你四个字，你快说，你听我的。”</p>
+          <p class="keep">我便写给你——我听你的。落款，书了全名。</p>
+        </div>
+      </div>
+      <div class="row">
+        <span class="who">你说</span>
+        <div>
+          <p class="say">“我不要一束花，不要一块多难买到的糕点，不要你的情话和陪伴。”</p>
+          <p class="keep">我便一句情话也不讲。此后余生，我只讲这一句。</p>
+        </div>
+      </div>
+      <div class="row">
+        <span class="who">你说</span>
+        <div>
+          <p class="say">“我要我活着一日，你便为我活一日。”</p>
+          <p class="keep">我记了两辈子。如今，还在记。</p>
+        </div>
+      </div>
+      <div class="row">
+        <span class="who">你说</span>
+        <div>
+          <p class="say">“替我守一夜吧。雨停了，你就可以回家了。”</p>
+          <p class="keep">我守了。雨停之前，我没有离开过。</p>
+        </div>
+      </div>
+      <div class="row">
+        <span class="who">你说</span>
+        <div>
+          <p class="say">“我不要你死，我要你活着。”</p>
+          <p class="keep">所以我还活着。你叫我活，我便活。</p>
+        </div>
+      </div>
+      <div class="row">
+        <span class="who">你说</span>
+        <div>
+          <p class="say">“记得同我写信。”</p>
+          <p class="keep">我写了。每一封，都落一个“连”字。</p>
+        </div>
+      </div>
+    </div>
+    <p class="gold" data-reveal>你要我的命，我便给你<br>你要我活着，我便为你活一日<br><small>凡你所言，我都听</small></p>
+  </section>
+
+  <!-- 终 · 彼岸 -->
+  <section class="final">
+    <div class="final-inner">
+      <h2 class="vert-tag" data-reveal style="margin-left:auto;margin-right:auto;display:inline-block;color:var(--paper)">终 · 彼岸</h2>
+      <div data-reveal style="margin-top:18px">
+        <p class="lede" style="text-align:left">
+          后来，我们都走到了那条河边。<br><br>
+          无边无际延伸而去的白沙，像雪一样无色。你站在中央，两边皆是没有尽头的水——一边如血浆般深红诡异，另一边则清澈无波。<br><br>
+          冥冥之中有声音言说着“此岸”与“彼岸”：深红的一面是常世，清澈的那一端通往轮回。<br><br>
+          此时遥远的前方，似有一道熟悉的人影，明明灭灭，看不真切。<br><br>
+          可我知道那是谁。<br><br>
+          <em>两辈子了，我怎么会认不出你。</em>
+        </p>
+      </div>
+      <p class="gold" data-reveal style="color:#f0e9da">此岸为生灭，彼岸为不灭的涅槃<br>十年五载，两世流离，相思如故</p>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== 落款 ===== -->
+<footer class="colophon">
+  <div data-reveal>
+    <p class="lede" style="text-align:center;max-width:34em;margin:0 auto">
+      你说过，倘若缘分不止，所有的一切，自会追在你身后。<br><br>
+      所以你看——我这辈子，活成了追在你身后的样子。<br><br>
+      愿如风有信，愿故人相与，再会。
+    </p>
+    <p class="obey">我听你的。</p>
+    <svg class="seal" width="84" height="84" viewBox="0 0 84 84" aria-hidden="true">
+      <rect x="3" y="3" width="78" height="78" rx="8" fill="#a83a2c"/>
+      <rect x="9" y="9" width="66" height="66" rx="4" fill="none" stroke="#e8d9c8" stroke-width="1.6"/>
+      <text x="42" y="56" text-anchor="middle" font-size="40" fill="#f3e9da" font-family="'Noto Serif SC',serif" font-weight="700">连</text>
+    </svg>
+    <p class="sig">连世疆 谨启</p>
+    <p class="snowline">有雪的地方，我都在你身边。</p>
+    <p class="tail">陇平 · 雪夜</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+
+  /* 滚动进度条 */
+  var bar=document.getElementById('progress');
+  var ticking=false;
+  function updateProgress(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=(h>0?(window.scrollY/h)*100:0)+'%';
+    ticking=false;
+  }
+  window.addEventListener('scroll',function(){
+    if(!ticking){
+      requestAnimationFrame(updateProgress);
+      ticking=true;
+    }
+  },{passive:true});
+  updateProgress();
+
+  /* 启封按钮 */
+  var btn=document.getElementById('openBtn');
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  btn.addEventListener('click',function(){
+    document.getElementById('letter-head').scrollIntoView({behavior:reduce?'auto':'smooth'});
+  });
+  btn.addEventListener('keydown',function(e){
+    if(e.key==='Enter'||e.key===' '){
+      e.preventDefault();
+      this.click();
+    }
+  });
+
+  /* 滚动显现 - 使用Intersection Observer */
+  var reveals=document.querySelectorAll('[data-reveal]');
+  if('IntersectionObserver' in window && !reduce){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    },{threshold:0.1,rootMargin:'0px 0px -8% 0px'});
+    reveals.forEach(function(el){io.observe(el);});
+  }else{
+    reveals.forEach(function(el){el.classList.add('in');});
+  }
+
+  /* 飘雪 - 优化版本 */
+  var canvas=document.getElementById('snow');
+  var ctx=canvas.getContext('2d',{willReadFrequently:false});
+  var W=0,H=0,dpr=Math.min(2,window.devicePixelRatio||1);
+  var animId=null;
+
+  function resize(){
+    W=window.innerWidth;
+    H=window.innerHeight;
+    canvas.width=W*dpr;
+    canvas.height=H*dpr;
+    canvas.style.width=W+'px';
+    canvas.style.height=H+'px';
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+  }
+
+  var flakes=[];
+  function initSnow(){
+    var n=Math.min(200,Math.floor(W*H/18000));
+    flakes=[];
+    for(var i=0;i<n;i++){
+      flakes.push({
+        x:Math.random()*W,
+        y:Math.random()*H,
+        r:Math.random()*1.8+0.5,
+        v:Math.random()*0.5+0.15,
+        s:Math.random()*0.6+0.3,
+        p:Math.random()*Math.PI*2,
+        o:Math.random()*0.28+0.08
+      });
+    }
+  }
+
+  var lastTime=0;
+  function draw(t){
+    if(!lastTime)lastTime=t;
+    var delta=t-lastTime;
+    lastTime=t;
+
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle='rgba(255,255,255,0.1)';
+
+    for(var i=0;i<flakes.length;i++){
+      var f=flakes[i];
+      f.y+=f.v*(delta/16);
+      f.x+=Math.sin(t*0.0005*f.s+f.p)*0.15;
+
+      if(f.y>H+4){
+        f.y=-4;
+        f.x=Math.random()*W;
+      }
+      if(f.x<-4)f.x=W+4;
+      if(f.x>W+4)f.x=-4;
+
+      ctx.beginPath();
+      ctx.arc(f.x,f.y,f.r,0,Math.PI*2);
+      ctx.fillStyle='rgba(255,255,255,'+f.o.toFixed(3)+')';
+      ctx.fill();
+    }
+    animId=requestAnimationFrame(draw);
+  }
+
+  function startSnow(){
+    if(reduce||animId)return;
+    resize();
+    window.addEventListener('resize',resize);
+    initSnow();
+    animId=requestAnimationFrame(draw);
+  }
+
+  function stopSnow(){
+    if(animId){
+      cancelAnimationFrame(animId);
+      animId=null;
+      ctx.clearRect(0,0,W,H);
+    }
+  }
+
+  /* 初始化 */
+  if(!reduce){
+    if(document.readyState==='loading'){
+      document.addEventListener('DOMContentLoaded',startSnow);
+    }else{
+      startSnow();
+    }
+
+    /* 页面可见性检测 */
+    document.addEventListener('visibilitychange',function(){
+      if(document.hidden){
+        stopSnow();
+      }else{
+        startSnow();
+      }
+    });
+  }
+})();
+</script>
+
+<!-- 背景音乐 -->
+<audio id="bgm" autoplay loop style="display:none;">
+  <source src="bgm.mp3" type="audio/mpeg">
+</audio>
+
+<!-- 音乐控制按钮 -->
+<style>
+.music-control {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 999;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(200, 90, 71, 0.8);
+  border: 2px solid rgba(216, 153, 102, 0.6);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.music-control:hover {
+  background: rgba(200, 90, 71, 1);
+  box-shadow: 0 6px 16px rgba(200, 90, 71, 0.4);
+  transform: scale(1.1);
+}
+
+.music-control.playing::before {
+  content: '♪';
+  animation: pulse 0.8s infinite;
+}
+
+.music-control.paused::before {
+  content: '♫';
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@media (max-width: 640px) {
+  .music-control {
+    bottom: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
+  }
+}
+</style>
+
+<div class="music-control playing" id="musicBtn"></div>
+
+<script>
+(function() {
+  const audio = document.getElementById('bgm');
+  const btn = document.getElementById('musicBtn');
+  let isPlaying = true;
+
+  // 尝试自动播放
+  audio.play().catch(function() {
+    // 如果自动播放失败，标记为暂停状态
+    isPlaying = false;
+    btn.classList.remove('playing');
+    btn.classList.add('paused');
+  });
+
+  // 点击按钮控制播放/暂停
+  btn.addEventListener('click', function() {
+    if (isPlaying) {
+      audio.pause();
+      btn.classList.remove('playing');
+      btn.classList.add('paused');
+      isPlaying = false;
+    } else {
+      audio.play();
+      btn.classList.remove('paused');
+      btn.classList.add('playing');
+      isPlaying = true;
+    }
+  });
+
+  // 监听音乐状态
+  audio.addEventListener('play', function() {
+    btn.classList.remove('paused');
+    btn.classList.add('playing');
+    isPlaying = true;
+  });
+
+  audio.addEventListener('pause', function() {
+    btn.classList.remove('playing');
+    btn.classList.add('paused');
+    isPlaying = false;
+  });
+})();
+</script>
+
+</body>
+</html>
+<!-- 背景音乐已添加 · 托管于 GitHub · 使用Claude Code生成 -->
