@@ -6,10 +6,8 @@
 <meta name="description" content="连世疆致卫上黎的一封跨越两世的情书">
 <title>如故 · 连世疆致卫上黎</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%230e1116'/%3E%3Ctext x='16' y='23' font-size='20' text-anchor='middle' fill='%23b8493a' font-family='serif'%3E连%3C/text%3E%3C/svg%3E">
-<link rel="preconnect" href="https://miaoda.feishu.cn" crossorigin>
-<link rel="dns-prefetch" href="https://miaoda.feishu.cn">
-<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap"></noscript>
+<link rel="preconnect" href="https://fonts.cdn.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.cdn.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap">
 <style>
 :root{
   --ink:#0b0d11;
@@ -678,113 +676,12 @@ body{
         startSnow();
       }
     });
-  }
-})();
 </script>
 
-<!-- 背景音乐 -->
+<!-- 背景音乐自动播放 -->
 <audio id="bgm" autoplay loop style="display:none;">
   <source src="bgm.mp3" type="audio/mpeg">
 </audio>
 
-<!-- 音乐控制按钮 -->
-<style>
-.music-control {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  z-index: 999;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: rgba(200, 90, 71, 0.8);
-  border: 2px solid rgba(216, 153, 102, 0.6);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-.music-control:hover {
-  background: rgba(200, 90, 71, 1);
-  box-shadow: 0 6px 16px rgba(200, 90, 71, 0.4);
-  transform: scale(1.1);
-}
-
-.music-control.playing::before {
-  content: '♪';
-  animation: pulse 0.8s infinite;
-}
-
-.music-control.paused::before {
-  content: '♫';
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
-}
-
-@media (max-width: 640px) {
-  .music-control {
-    bottom: 20px;
-    right: 20px;
-    width: 44px;
-    height: 44px;
-    font-size: 20px;
-  }
-}
-</style>
-
-<div class="music-control playing" id="musicBtn"></div>
-
-<script>
-(function() {
-  const audio = document.getElementById('bgm');
-  const btn = document.getElementById('musicBtn');
-  let isPlaying = true;
-
-  // 尝试自动播放
-  audio.play().catch(function() {
-    // 如果自动播放失败，标记为暂停状态
-    isPlaying = false;
-    btn.classList.remove('playing');
-    btn.classList.add('paused');
-  });
-
-  // 点击按钮控制播放/暂停
-  btn.addEventListener('click', function() {
-    if (isPlaying) {
-      audio.pause();
-      btn.classList.remove('playing');
-      btn.classList.add('paused');
-      isPlaying = false;
-    } else {
-      audio.play();
-      btn.classList.remove('paused');
-      btn.classList.add('playing');
-      isPlaying = true;
-    }
-  });
-
-  // 监听音乐状态
-  audio.addEventListener('play', function() {
-    btn.classList.remove('paused');
-    btn.classList.add('playing');
-    isPlaying = true;
-  });
-
-  audio.addEventListener('pause', function() {
-    btn.classList.remove('playing');
-    btn.classList.add('paused');
-    isPlaying = false;
-  });
-})();
-</script>
-
 </body>
 </html>
-<!-- 背景音乐已添加 · 托管于 GitHub · 使用Claude Code生成 -->
