@@ -275,6 +275,52 @@ body{
 .seal:hover{transform:scale(1.08) rotate(2deg)}
 .colophon .tail{margin-top:34px;font-size:12px;letter-spacing:.3em;color:var(--paper-dim);opacity:.6}
 
+/* 选择区域 */
+.choice-section{
+  position:relative;z-index:5;text-align:center;
+  padding:clamp(60px,10vw,100px) 26px clamp(80px,12vw,120px);
+  background:linear-gradient(180deg,var(--ink) 0%,rgba(14,17,22,.95) 100%);
+}
+.choice-inner{max-width:38em;margin:0 auto}
+.choice-question{
+  font-size:clamp(24px,5vw,40px);font-weight:700;letter-spacing:.1em;
+  color:var(--paper);line-height:1.6;margin-bottom:clamp(40px,6vw,60px);
+}
+.choice-buttons{display:flex;gap:clamp(20px,4vw,40px);justify-content:center;flex-wrap:wrap}
+.choice-btn{
+  display:inline-block;min-width:140px;
+  padding:clamp(14px,2.5vw,18px) clamp(40px,6vw,60px);
+  font-size:clamp(17px,2.8vw,22px);font-weight:600;letter-spacing:.3em;
+  text-decoration:none;border-radius:999px;
+  transition:all var(--transition-smooth);
+  position:relative;overflow:hidden;
+}
+.choice-btn::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at center,rgba(255,255,255,.1) 0%,transparent 70%);
+  opacity:0;transition:opacity var(--transition-smooth);
+}
+.choice-btn:hover::before{opacity:1}
+.choice-yes{
+  background:linear-gradient(135deg,var(--vermil) 0%,var(--vermil-soft) 100%);
+  color:#fff;box-shadow:0 4px 20px rgba(200,90,71,.4);
+}
+.choice-yes:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 32px rgba(200,90,71,.6);
+}
+.choice-no{
+  background:rgba(169,188,200,.15);
+  border:1.5px solid var(--frost);
+  color:var(--frost);
+}
+.choice-no:hover{
+  background:rgba(169,188,200,.25);
+  border-color:var(--paper);
+  color:var(--paper);
+  transform:translateY(-2px);
+}
+
 /* 滚动显现 */
 [data-reveal]{opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1s cubic-bezier(.22,1,.36,1)}
 [data-reveal].in{opacity:1;transform:none}
@@ -602,6 +648,17 @@ body{
     <p class="tail">陇平 · 雪夜</p>
   </div>
 </footer>
+
+<!-- ===== 选择 ===== -->
+<section class="choice-section">
+  <div class="choice-inner">
+    <h2 class="choice-question" data-reveal>阿黎，这次能让我陪你走下去吗？</h2>
+    <div class="choice-buttons" data-reveal>
+      <a href="together.html" class="choice-btn choice-yes">好</a>
+      <a href="farewell.html" class="choice-btn choice-no">不好</a>
+    </div>
+  </div>
+</section>
 
 <script>
 (function(){
