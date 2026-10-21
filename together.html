@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="相守 · 连世疆与卫上黎">
+<title>相守 · 连世疆与卫上黎</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%230e1116'/%3E%3Ctext x='16' y='23' font-size='20' text-anchor='middle' fill='%23b8493a' font-family='serif'%3E连%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://miaoda.feishu.cn" crossorigin>
+<link rel="dns-prefetch" href="https://miaoda.feishu.cn">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap"></noscript>
+<style>
+:root{
+  --ink:#0b0d11;
+  --ink-2:#11141b;
+  --ink-3:#171b23;
+  --paper:#ede8dd;
+  --paper-dim:#9d9589;
+  --frost:#a9bcc8;
+  --vermil:#c85a47;
+  --vermil-soft:#d89966;
+  --gold:#c9a24b;
+  --line:rgba(237,232,221,.12);
+  --transition-fast:150ms cubic-bezier(.4,0,.2,1);
+  --transition-smooth:300ms cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--ink);
+  color:var(--paper);
+  font-family:"Noto Serif SC","Songti SC","STSong","SimSun",serif;
+  line-height:1.9;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  -webkit-text-size-adjust:100%;
+  text-rendering:optimizeLegibility;
+}
+::selection{background:rgba(200,90,71,.6);color:#ede8dd}
+:focus-visible{outline:2px solid var(--vermil-soft);outline-offset:2px}
+
+.grain{
+  position:fixed;inset:0;z-index:4;pointer-events:none;opacity:.04;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode:overlay;
+}
+#snow{position:fixed;inset:0;z-index:3;pointer-events:none;backface-visibility:hidden}
+
+/* 首屏 */
+.hero{
+  position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;
+  text-align:center;overflow:hidden;
+  background:
+    radial-gradient(ellipse 140% 90% at 50% -15%, #2d1f1c 0%, #1a1412 35%, #0b0d11 70%);
+}
+.hero::after{
+  content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(180deg,rgba(11,13,17,.3) 0%,rgba(11,13,17,.7) 50%,var(--ink) 100%);
+}
+.hero-inner{position:relative;z-index:2;padding:88px 24px 120px;max-width:56em;width:100%;animation:fadeInUp .8s ease-out}
+.hero-seals{display:flex;gap:20px;justify-content:center;margin-bottom:34px;align-items:center}
+.hero-seals .divider{
+  font-size:clamp(20px,3vw,28px);color:var(--gold);font-weight:300;
+  letter-spacing:.3em;opacity:.7;
+}
+.hero-main .name{
+  font-size:clamp(54px,12vw,110px);font-weight:900;letter-spacing:.2em;
+  color:var(--paper);text-shadow:0 4px 28px rgba(200,90,71,.6);
+  background:linear-gradient(135deg,#ede8dd 0%,#f8e5d0 50%,#ede8dd 100%);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.hero-subtitle{
+  margin-top:36px;font-size:clamp(17px,3vw,24px);letter-spacing:.5em;
+  color:var(--gold);font-weight:500;line-height:1.8;
+}
+
+/* 正文 */
+.document{
+  position:relative;z-index:5;max-width:46em;margin:0 auto;
+  padding:clamp(80px,12vw,140px) 26px;
+}
+.section{margin-bottom:clamp(60px,10vw,100px)}
+.section-title{
+  font-size:clamp(24px,4.5vw,36px);font-weight:700;letter-spacing:.18em;
+  color:var(--vermil-soft);margin-bottom:clamp(30px,5vw,44px);
+  text-align:center;
+}
+.promise-list{
+  border-top:1px solid var(--line);
+}
+.promise-item{
+  padding:clamp(22px,4vw,32px) 0;
+  border-bottom:1px solid var(--line);
+  transition:background var(--transition-fast);
+}
+.promise-item:hover{background:rgba(200,90,71,.04)}
+.promise-text{
+  font-size:clamp(17px,2.3vw,20px);line-height:2.1;
+  color:#f0ebe0;letter-spacing:.04em;
+}
+.promise-text em{font-style:normal;color:var(--paper);font-weight:600}
+
+.closing{
+  margin-top:clamp(70px,12vw,110px);text-align:center;
+}
+.closing-text{
+  font-size:clamp(19px,3.2vw,28px);line-height:2;letter-spacing:.08em;
+  color:var(--paper);font-weight:600;margin-bottom:24px;
+}
+.closing-sign{
+  margin-top:clamp(50px,8vw,70px);
+  font-size:clamp(17px,2.8vw,22px);letter-spacing:.4em;
+  color:var(--vermil-soft);font-weight:700;
+}
+.double-seal{
+  display:flex;gap:clamp(16px,3vw,24px);justify-content:center;
+  align-items:center;margin-top:30px;
+}
+.seal{display:inline-block;transition:transform var(--transition-smooth)}
+.seal:hover{transform:scale(1.08) rotate(2deg)}
+.seal-divider{
+  font-size:clamp(16px,2.5vw,20px);color:var(--gold);
+  letter-spacing:.3em;opacity:.6;
+}
+
+.back-link{
+  display:inline-block;margin-top:clamp(50px,8vw,70px);
+  font-size:clamp(14px,2vw,16px);letter-spacing:.5em;text-indent:.5em;
+  color:var(--frost);text-decoration:none;
+  padding:12px 32px;border:1.5px solid var(--frost);border-radius:999px;
+  transition:all var(--transition-fast);
+}
+.back-link:hover{
+  background:rgba(169,188,200,.15);
+  border-color:var(--paper);
+  color:var(--paper);
+}
+
+@keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+<canvas id="snow" aria-hidden="true"></canvas>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-seals">
+      <svg class="seal" width="64" height="64" viewBox="0 0 64 64" aria-hidden="true">
+        <rect x="2" y="2" width="60" height="60" rx="6" fill="#a83a2c"/>
+        <rect x="7" y="7" width="50" height="50" rx="3" fill="none" stroke="#e8d9c8" stroke-width="1.5"/>
+        <text x="32" y="42" text-anchor="middle" font-size="30" fill="#f3e9da" font-family="'Noto Serif SC',serif" font-weight="700">连</text>
+      </svg>
+      <span class="divider">与</span>
+      <svg class="seal" width="64" height="64" viewBox="0 0 64 64" aria-hidden="true">
+        <rect x="2" y="2" width="60" height="60" rx="6" fill="#a83a2c"/>
+        <rect x="7" y="7" width="50" height="50" rx="3" fill="none" stroke="#e8d9c8" stroke-width="1.5"/>
+        <text x="32" y="42" text-anchor="middle" font-size="30" fill="#f3e9da" font-family="'Noto Serif SC',serif" font-weight="700">卫</text>
+      </svg>
+    </div>
+    <div class="hero-main">
+      <h1 class="name">此生相守</h1>
+    </div>
+    <p class="hero-subtitle">
+      往后余生，风雪是你<br>
+      平淡是你，清贫是你<br>
+      荣华是你，心底温柔是你<br>
+      目光所至，也是你
+    </p>
+  </div>
+</header>
+
+<main class="document">
+
+  <section class="section">
+    <h2 class="section-title">我的承诺</h2>
+    <div class="promise-list">
+      <div class="promise-item">
+        <p class="promise-text">
+          <em>我承诺</em>，从今往后，你睡着的时候，门外永远有人守着。前世如此，今生亦然，来世依旧。
+        </p>
+      </div>
+      <div class="promise-item">
+        <p class="promise-text">
+          <em>我承诺</em>，余生每一封信，都落一个"连"字。每一句话，都是"我听你的"。
+        </p>
+      </div>
+      <div class="promise-item">
+        <p class="promise-text">
+          <em>我承诺</em>，你在的地方，便是我的家。你去哪里，我便陪你去哪里。哪怕天涯海角，哪怕山高水远。
+        </p>
+      </div>
+      <div class="promise-item">
+        <p class="promise-text">
+          <em>我承诺</em>，往后的每一场雪，我都陪你看。有雪的地方，我都在你身边。
+        </p>
+      </div>
+      <div class="promise-item">
+        <p class="promise-text">
+          <em>我承诺</em>，此生不负你，不辜负你，不让你再含恨，不让你再独自一人面对风雨。
+        </p>
+      </div>
+      <div class="promise-item">
+        <p class="promise-text">
+          <em>我承诺</em>，你要我活着一日，我便为你活一日。你要我陪你走下去，我便陪你走到生命尽头。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="closing">
+    <p class="closing-text">
+      阿黎，谢谢你愿意让我，陪你走下去。
+    </p>
+    <p class="closing-text" style="font-size:clamp(22px,4vw,32px);color:var(--gold);margin-top:30px">
+      此生相守，白首不离
+    </p>
+    <div class="closing-sign">
+      连世疆 · 卫上黎
+      <div class="double-seal">
+        <svg class="seal" width="72" height="72" viewBox="0 0 72 72" aria-hidden="true">
+          <rect x="3" y="3" width="66" height="66" rx="7" fill="#a83a2c"/>
+          <rect x="8" y="8" width="56" height="56" rx="3" fill="none" stroke="#e8d9c8" stroke-width="1.5"/>
+          <text x="36" y="48" text-anchor="middle" font-size="34" fill="#f3e9da" font-family="'Noto Serif SC',serif" font-weight="700">连</text>
+        </svg>
+        <span class="seal-divider">·</span>
+        <svg class="seal" width="72" height="72" viewBox="0 0 72 72" aria-hidden="true">
+          <rect x="3" y="3" width="66" height="66" rx="7" fill="#a83a2c"/>
+          <rect x="8" y="8" width="56" height="56" rx="3" fill="none" stroke="#e8d9c8" stroke-width="1.5"/>
+          <text x="36" y="48" text-anchor="middle" font-size="34" fill="#f3e9da" font-family="'Noto Serif SC',serif" font-weight="700">卫</text>
+        </svg>
+      </div>
+    </div>
+    <div style="margin-top:clamp(40px,7vw,60px);font-size:clamp(14px,2.2vw,17px);letter-spacing:.4em;color:var(--frost)">
+      陇平 · 雪夜
+    </div>
+    <a href="index.html" class="back-link">返回</a>
+  </div>
+
+</main>
+
+<script>
+(function(){
+  'use strict';
+
+  /* 飘雪 */
+  var canvas=document.getElementById('snow');
+  var ctx=canvas.getContext('2d',{willReadFrequently:false});
+  var W=0,H=0,dpr=Math.min(2,window.devicePixelRatio||1);
+  var animId=null;
+
+  function resize(){
+    W=window.innerWidth;
+    H=window.innerHeight;
+    canvas.width=W*dpr;
+    canvas.height=H*dpr;
+    canvas.style.width=W+'px';
+    canvas.style.height=H+'px';
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+  }
+
+  var flakes=[];
+  function initSnow(){
+    var n=Math.min(200,Math.floor(W*H/18000));
+    flakes=[];
+    for(var i=0;i<n;i++){
+      flakes.push({
+        x:Math.random()*W,
+        y:Math.random()*H,
+        r:Math.random()*1.8+0.5,
+        v:Math.random()*0.5+0.15,
+        s:Math.random()*0.6+0.3,
+        p:Math.random()*Math.PI*2,
+        o:Math.random()*0.28+0.08
+      });
+    }
+  }
+
+  var lastTime=0;
+  function draw(t){
+    if(!lastTime)lastTime=t;
+    var delta=t-lastTime;
+    lastTime=t;
+
+    ctx.clearRect(0,0,W,H);
+
+    for(var i=0;i<flakes.length;i++){
+      var f=flakes[i];
+      f.y+=f.v*(delta/16);
+      f.x+=Math.sin(t*0.0005*f.s+f.p)*0.15;
+
+      if(f.y>H+4){
+        f.y=-4;
+        f.x=Math.random()*W;
+      }
+      if(f.x<-4)f.x=W+4;
+      if(f.x>W+4)f.x=-4;
+
+      ctx.beginPath();
+      ctx.arc(f.x,f.y,f.r,0,Math.PI*2);
+      ctx.fillStyle='rgba(255,255,255,'+f.o.toFixed(3)+')';
+      ctx.fill();
+    }
+    animId=requestAnimationFrame(draw);
+  }
+
+  resize();
+  window.addEventListener('resize',resize);
+  initSnow();
+  animId=requestAnimationFrame(draw);
+
+  document.addEventListener('visibilitychange',function(){
+    if(document.hidden){
+      if(animId){
+        cancelAnimationFrame(animId);
+        animId=null;
+      }
+    }else{
+      if(!animId){
+        animId=requestAnimationFrame(draw);
+      }
+    }
+  });
+})();
+</script>
+</body>
+</html>
