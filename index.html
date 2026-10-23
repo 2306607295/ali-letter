@@ -117,6 +117,25 @@ body{
   background:
     radial-gradient(130% 90% at 50% -10%, #243347 0%, #141f2d 45%, #0b0d11 100%);
 }
+/* 插画：远景水墨，隐入夜色 */
+.hero-art{
+  position:absolute;left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  width:118%;height:auto;min-height:100%;
+  object-fit:cover;
+  opacity:.16;
+  mix-blend-mode:screen;
+  filter:grayscale(.35) contrast(1.15) brightness(1.05);
+  -webkit-mask-image:radial-gradient(78% 68% at 50% 42%,#000 0%,rgba(0,0,0,.55) 45%,transparent 78%);
+  mask-image:radial-gradient(78% 68% at 50% 42%,#000 0%,rgba(0,0,0,.55) 45%,transparent 78%);
+  pointer-events:none;
+}
+.hero-art-fade{
+  position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    linear-gradient(180deg,rgba(11,13,17,.62) 0%,rgba(11,13,17,.34) 38%,rgba(11,13,17,.72) 72%,var(--ink) 100%),
+    radial-gradient(110% 80% at 50% 34%,rgba(11,13,17,.10) 0%,rgba(11,13,17,.66) 100%);
+}
 .hero-moon{
   position:absolute;top:11%;right:16%;width:96px;height:96px;border-radius:50%;z-index:1;
   background:radial-gradient(circle at 40% 36%, #faf6ed 0%, #dcd4c0 55%, rgba(220,212,192,0) 74%);
@@ -128,10 +147,9 @@ body{
   backface-visibility:hidden;
 }
 .hero-bg::after{
-  content:"";position:absolute;inset:0;
+  content:"";position:absolute;inset:0;z-index:2;
   background:
-    linear-gradient(180deg,rgba(9,11,15,.38) 0%,rgba(9,11,15,.58) 45%,rgba(9,11,15,.85) 78%,var(--ink) 100%),
-    radial-gradient(120% 90% at 50% 30%,rgba(9,11,15,.12) 0%,rgba(9,11,15,.68) 100%);
+    linear-gradient(180deg,rgba(9,11,15,.30) 0%,rgba(9,11,15,.34) 45%,rgba(9,11,15,.66) 80%,var(--ink) 100%);
 }
 .hero-inner{position:relative;z-index:2;padding:88px 24px 120px;max-width:56em;width:100%;animation:fadeInUp .8s ease-out}
 .hero-seal{margin-bottom:34px;animation:float 3.2s ease-in-out infinite}
@@ -248,8 +266,20 @@ body{
 }
 @media (max-width:768px){.final{background-attachment:scroll}}
 .final::before{
-  content:"";position:absolute;inset:0;
+  content:"";position:absolute;inset:0;z-index:1;
   background:linear-gradient(180deg,var(--ink) 0%,rgba(10,12,16,.5) 40%,rgba(10,12,16,.8) 100%);
+}
+/* 彼岸插画：两世相隔的彼岸 */
+.final-art{
+  position:absolute;left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  width:100%;height:100%;object-fit:cover;
+  opacity:.20;
+  mix-blend-mode:screen;
+  filter:grayscale(.2) contrast(1.1);
+  -webkit-mask-image:radial-gradient(85% 80% at 50% 50%,#000 0%,rgba(0,0,0,.6) 50%,transparent 85%);
+  mask-image:radial-gradient(85% 80% at 50% 50%,#000 0%,rgba(0,0,0,.6) 50%,transparent 85%);
+  pointer-events:none;
 }
 .final-inner{position:relative;z-index:2;max-width:44em;padding:96px 26px;text-align:center}
 
@@ -357,7 +387,7 @@ body{
 }
 @media print{
   body{background:#fff;color:#111}
-  .grain,#snow,#progress,.hero-bg{display:none}
+  .grain,#snow,#progress,.hero-bg,.hero-art,.final-art{display:none}
   .hero{min-height:auto;background:#fff}
 }
 </style>
@@ -386,6 +416,8 @@ body{
 <!-- ===== 首屏 ===== -->
 <header class="hero">
   <div class="hero-bg" role="img" aria-label="陇平雪夜城墙">
+    <img class="hero-art" src="art.webp" alt="" aria-hidden="true">
+    <div class="hero-art-fade" aria-hidden="true"></div>
     <div class="hero-moon" aria-hidden="true"></div>
     <svg class="hero-wall" viewBox="0 0 1440 230" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
       <path d="M0 150 L130 108 L270 138 L430 96 L570 130 L720 100 L880 134 L1040 104 L1200 134 L1340 112 L1440 138 L1440 230 L0 230 Z" fill="#0d1219"/>
@@ -611,6 +643,7 @@ body{
 
   <!-- 终 · 彼岸 -->
   <section class="final">
+    <img class="final-art" src="art.webp" alt="" aria-hidden="true">
     <div class="final-inner">
       <h2 class="vert-tag" data-reveal style="margin-left:auto;margin-right:auto;display:inline-block;color:var(--paper)">终 · 彼岸</h2>
       <div data-reveal style="margin-top:18px">

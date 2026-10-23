@@ -6,10 +6,9 @@
 <meta name="description" content="和离书 · 连世疆致卫上黎">
 <title>和离书 · 连世疆致卫上黎</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%230e1116'/%3E%3Ctext x='16' y='23' font-size='20' text-anchor='middle' fill='%23b8493a' font-family='serif'%3E连%3C/text%3E%3C/svg%3E">
-<link rel="preconnect" href="https://miaoda.feishu.cn" crossorigin>
-<link rel="dns-prefetch" href="https://miaoda.feishu.cn">
-<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap"></noscript>
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap"></noscript>
 <style>
 :root{
   --ink:#0b0d11;
@@ -43,241 +42,166 @@ body{
   position:fixed;inset:0;z-index:4;pointer-events:none;opacity:.04;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
   mix-blend-mode:overlay;
-}
-#snow{position:fixed;inset:0;z-index:3;pointer-events:none;backface-visibility:hidden}
-
-/* 首屏 */
-.hero{
-  position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;
-  text-align:center;overflow:hidden;
-  background:linear-gradient(180deg,#0b0d11 0%,#14181f 50%,#0b0d11 100%);
-}
-.hero-inner{position:relative;z-index:2;padding:88px 24px 120px;max-width:56em;width:100%;animation:fadeInUp .8s ease-out}
-.hero-seal{margin-bottom:34px}
-.hero-main .name{
-  font-size:clamp(48px,10vw,96px);font-weight:900;letter-spacing:.16em;
-  color:var(--paper);text-shadow:0 4px 24px rgba(0,0,0,.75);
-}
-.hero-subtitle{
-  margin-top:30px;font-size:clamp(16px,2.8vw,22px);letter-spacing:.5em;
-  color:var(--frost);font-weight:500;
+  will-change:opacity;
 }
 
-/* 正文 */
-.document{
-  position:relative;z-index:5;max-width:46em;margin:0 auto;padding:clamp(80px,12vw,140px) 26px;
+/* 插画背景：隐入夜色 */
+.doc-art{
+  position:fixed;left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  width:120%;height:auto;min-height:100%;
+  object-fit:cover;
+  z-index:0;pointer-events:none;
+  opacity:.12;
+  mix-blend-mode:screen;
+  filter:grayscale(.4) contrast(1.1);
+  -webkit-mask-image:radial-gradient(80% 70% at 50% 45%,#000 0%,rgba(0,0,0,.5) 50%,transparent 82%);
+  mask-image:radial-gradient(80% 70% at 50% 45%,#000 0%,rgba(0,0,0,.5) 50%,transparent 82%);
+}
+
+.container{
+  position:relative;
+  z-index:5;
+  max-width:46em;
+  margin:0 auto;
+  padding:clamp(80px,12vw,130px) 26px 90px;
+}
+
+.doc-header{
+  text-align:center;
+  margin-bottom:clamp(60px,10vw,90px);
 }
 .doc-title{
-  text-align:center;margin-bottom:clamp(50px,8vw,80px);
-  font-size:clamp(28px,5vw,42px);font-weight:700;letter-spacing:.2em;
+  font-size:clamp(44px,10vw,92px);
+  font-weight:900;
+  letter-spacing:.14em;
   color:var(--paper);
+  margin-bottom:.3em;
 }
+.doc-subtitle{
+  font-size:clamp(19px,3.2vw,27px);
+  color:var(--vermil-soft);
+  letter-spacing:.28em;
+  font-weight:700;
+}
+
 .doc-content{
-  font-size:clamp(17px,2.2vw,20px);line-height:2.2;letter-spacing:.06em;
-  color:#f0ebe0;text-align:justify;
+  font-size:clamp(17px,2.1vw,20px);
+  line-height:2.1;
+  letter-spacing:.02em;
+  color:#f0ebe0;
 }
-.doc-content p{margin-bottom:1.8em}
-.doc-content p:last-child{margin-bottom:0}
-.doc-content em{font-style:normal;color:var(--paper);font-weight:600}
-.doc-signature{
-  margin-top:clamp(60px,10vw,100px);text-align:right;
-  font-size:clamp(18px,3vw,24px);letter-spacing:.4em;
-  color:var(--vermil-soft);font-weight:700;
+.doc-content p{
+  margin-bottom:1.2em;
+  text-align:justify;
+  hyphens:auto;
 }
-.seal{display:inline-block;margin-top:20px;transition:transform var(--transition-smooth)}
-.seal:hover{transform:scale(1.08) rotate(2deg)}
+.doc-content em{
+  font-style:normal;
+  color:var(--vermil-soft);
+  font-weight:600;
+}
+
+.doc-footer{
+  margin-top:clamp(60px,10vw,90px);
+  text-align:center;
+}
+.doc-sign{
+  font-size:clamp(15px,2.4vw,19px);
+  letter-spacing:.4em;
+  color:var(--paper-dim);
+  margin-bottom:30px;
+}
+.seal{
+  display:inline-block;
+  transition:transform var(--transition-smooth);
+}
+.seal:hover{
+  transform:scale(1.08) rotate(2deg);
+}
 
 .back-link{
-  display:inline-block;margin-top:clamp(60px,10vw,80px);
-  font-size:clamp(14px,2vw,16px);letter-spacing:.5em;text-indent:.5em;
-  color:var(--frost);text-decoration:none;
-  padding:12px 32px;border:1.5px solid var(--frost);border-radius:999px;
+  display:inline-block;
+  margin-top:50px;
+  font-family:inherit;
+  font-size:14px;
+  letter-spacing:.5em;
+  text-indent:.5em;
+  color:var(--paper);
+  background:rgba(200,90,71,.12);
+  border:1.5px solid rgba(216,153,102,.6);
+  padding:14px 34px 14px 40px;
+  text-decoration:none;
+  cursor:pointer;
   transition:all var(--transition-fast);
+  border-radius:2px;
 }
 .back-link:hover{
-  background:rgba(169,188,200,.15);
-  border-color:var(--paper);
-  color:var(--paper);
+  background:var(--vermil);
+  color:#fff;
+  border-color:var(--vermil);
+  box-shadow:0 8px 24px rgba(200,90,71,.3);
+}
+.back-link:active{
+  transform:scale(.98);
 }
 
-@keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@media (max-width:768px){
+  .doc-content{font-size:16px;line-height:2}
+}
+
+@media (max-width:520px){
+  .doc-title{margin-bottom:.25em}
+  .back-link{padding:12px 28px 12px 32px;font-size:13px}
+}
+
+@media print{
+  body{background:#fff;color:#111}
+  .grain,.back-link{display:none}
+}
 </style>
 </head>
 <body>
 
 <div class="grain" aria-hidden="true"></div>
-<canvas id="snow" aria-hidden="true"></canvas>
+<img class="doc-art" src="art.webp" alt="" aria-hidden="true">
 
-<header class="hero">
-  <div class="hero-inner">
-    <div class="hero-seal">
-      <svg class="seal" width="64" height="64" viewBox="0 0 64 64" aria-hidden="true">
-        <rect x="2" y="2" width="60" height="60" rx="6" fill="#a83a2c"/>
-        <rect x="7" y="7" width="50" height="50" rx="3" fill="none" stroke="#e8d9c8" stroke-width="1.5"/>
-        <text x="32" y="42" text-anchor="middle" font-size="30" fill="#f3e9da" font-family="'Noto Serif SC',serif" font-weight="700">连</text>
-      </svg>
-    </div>
-    <div class="hero-main">
-      <h1 class="name">和离书</h1>
-    </div>
-    <p class="hero-subtitle">连世疆致卫上黎</p>
-  </div>
-</header>
+<div class="container">
+  <header class="doc-header">
+    <h1 class="doc-title">和離書</h1>
+    <p class="doc-subtitle">連世疆致卫上黎</p>
+  </header>
 
-<main class="document">
-  <article>
-    <h2 class="doc-title">和离书</h2>
-    <div class="doc-content">
-      <p>
-        卫上黎：
-      </p>
-      <p>
-        见字如晤。
-      </p>
-      <p>
-        今夜陇平雪落甚厚，我倚城墙而立，久久不能平静。这些年，我以为时间能抚平一切，以为重来一世便能弥补。可今日我终于明白——<em>有些伤痕，不是我一厢情愿就能抹去的。</em>
-      </p>
-      <p>
-        <em>此番，由我写下和离之书，还你自由之身。</em>
-      </p>
-      <p>
-        关于玥楼——阿黎，我不敢说"我不怪你"，因为那四个字太轻了。<em>玥楼的死，不是你的错，也不全是我的错，但她确实死在了你我之间那场无解的棋局里。</em>
-      </p>
-      <p>
-        上辈子，我开城门那一刻，心里想的是保你，保卫氏，保这座城里还活着的人。可我没想到的是，<em>我以为的"保全"，在你眼里是背叛</em>。你恨我，恨得对。因为那道门一开，卫氏满门不存，你含恨东华，孤苦终老。
-      </p>
-      <p>
-        你知道我最后悔的是什么吗？<em>不是我选错了，而是我从来没问过你——阿黎，你想怎么选。</em>
-      </p>
-      <p>
-        这辈子，我以为我学会了。我说"我听你的"，我守在你门外，我以为这样就够了。可我错了。<em>你要的不是一个守夜人，你要的是一个真正懂你、尊重你、不会再让你在沉默里咽下所有苦的人。</em>
-      </p>
-      <p>
-        而我——我始终没能成为那个人。
-      </p>
-      <p>
-        所以今日，我写下这封和离书。<em>不是因为我不爱你，而是因为我爱你，所以我不能再用我的爱，绑住你的人生。</em>
-      </p>
-      <p>
-        玥楼走的那天，我记得她最后看了我一眼。那一眼里没有怨，只有无奈。她大概在想：<em>你们两个傻子，明明都不想放手，却偏要把彼此推得越来越远。</em>
-      </p>
-      <p>
-        阿黎，这一世，我不求你原谅我。<em>有些事，不需要原谅，也不该原谅。</em>我只希望，往后你的人生，不要再被我拖累。
-      </p>
-      <p>
-        至于下一世——我不敢奢望了。<em>如果真有来生，我不求再遇见你。因为每一次遇见，都是一场劫。</em>
-      </p>
-      <p>
-        倒不如，就此错过。
-      </p>
-      <p>
-        你好好活着，我便心安。
-      </p>
-      <p>
-        <em>此生此世，缘尽于此。</em>
-      </p>
-      <p>
-        别了，阿黎。
-      </p>
-    </div>
-    <div class="doc-signature">
-      连世疆 谨启
-      <br>
-      <svg class="seal" width="72" height="72" viewBox="0 0 72 72" aria-hidden="true">
-        <rect x="3" y="3" width="66" height="66" rx="7" fill="#a83a2c"/>
-        <rect x="8" y="8" width="56" height="56" rx="3" fill="none" stroke="#e8d9c8" stroke-width="1.5"/>
-        <text x="36" y="48" text-anchor="middle" font-size="34" fill="#f3e9da" font-family="'Noto Serif SC',serif" font-weight="700">连</text>
-      </svg>
-    </div>
-    <div style="text-align:center">
-      <a href="index.html" class="back-link">返回</a>
-    </div>
+  <article class="doc-content">
+    <p>卫上黎：</p>
+    <p>见字如晤。</p>
+    <p>今夜陇平雪落甚厚，我倚城墙而立，久久不能平静。这些年，我以为时间能抚平一切，以为重来一世便能弥补。可今日我终于明白——<em>有些伤痕，不是我一厢情愿就能抹去的。</em></p>
+    <p><em>此番，由我写下和离之书，还你自由之身。</em></p>
+    <p>关于玥楼——阿黎，我不敢说"我不怪你"，因为那四个字太轻了。<em>玥楼的死，不是你的错，也不全是我的错，但她确实死在了你我之间那场无解的棋局里。</em></p>
+    <p>上辈子，我开城门那一刻，心里想的是保你，保卫氏，保这座城里还活着的人。可我没想到的是，<em>我以为的"保全"，在你眼里是背叛</em>。你恨我，恨得对。因为那道门一开，卫氏满门不存，你含恨东华，孤苦终老。</p>
+    <p>你知道我最后悔的是什么吗？<em>不是我选错了，而是我从来没问过你——阿黎，你想怎么选。</em></p>
+    <p>这辈子，我以为我学会了。我说"我听你的"，我守在你门外，我以为这样就够了。可我错了。<em>你要的不是一个守夜人，你要的是一个真正懂你、尊重你、不会再让你在沉默里咽下所有苦的人。</em></p>
+    <p>而我——我始终没能成为那个人。</p>
+    <p>所以今日，我写下这封和离书。<em>不是因为我不爱你，而是因为我爱你，所以我不能再用我的爱，绑住你的人生。</em></p>
+    <p>玥楼走的那天，我记得她最后看了我一眼。那一眼里没有怨，只有无奈。她大概在想：<em>你们两个傻子，明明都不想放手，却偏要把彼此推得越来越远。</em></p>
+    <p>阿黎，这一世，我不求你原谅我。<em>有些事，不需要原谅，也不该原谅。</em>我只希望，往后你的人生，不要再被我拖累。</p>
+    <p>至于下一世——我不敢奢望了。<em>如果真有来生，我不求再遇见你。因为每一次遇见，都是一场劫。</em></p>
+    <p>倒不如，就此错过。</p>
+    <p>你好好活着，我便心安。</p>
+    <p><em>此生此世，缘尽于此。</em></p>
+    <p>别了，阿黎。</p>
   </article>
-</main>
 
-<script>
-(function(){
-  'use strict';
+  <footer class="doc-footer">
+    <p class="doc-sign">連世疆 謹啓</p>
+    <svg class="seal" width="80" height="80" viewBox="0 0 80 80" aria-hidden="true">
+      <rect x="4" y="4" width="72" height="72" rx="8" fill="#a83a2c"/>
+      <rect x="10" y="10" width="60" height="60" rx="4" fill="none" stroke="#f3e9da" stroke-width="1.8"/>
+      <text x="40" y="54" text-anchor="middle" font-size="38" fill="#f3e9da" font-family="'Noto Serif SC',serif" font-weight="700">連</text>
+    </svg>
+    <a href="index.html" class="back-link">返回情書</a>
+  </footer>
+</div>
 
-  /* 飘雪 */
-  var canvas=document.getElementById('snow');
-  var ctx=canvas.getContext('2d',{willReadFrequently:false});
-  var W=0,H=0,dpr=Math.min(2,window.devicePixelRatio||1);
-  var animId=null;
-
-  function resize(){
-    W=window.innerWidth;
-    H=window.innerHeight;
-    canvas.width=W*dpr;
-    canvas.height=H*dpr;
-    canvas.style.width=W+'px';
-    canvas.style.height=H+'px';
-    ctx.setTransform(dpr,0,0,dpr,0,0);
-  }
-
-  var flakes=[];
-  function initSnow(){
-    var n=Math.min(200,Math.floor(W*H/18000));
-    flakes=[];
-    for(var i=0;i<n;i++){
-      flakes.push({
-        x:Math.random()*W,
-        y:Math.random()*H,
-        r:Math.random()*1.8+0.5,
-        v:Math.random()*0.5+0.15,
-        s:Math.random()*0.6+0.3,
-        p:Math.random()*Math.PI*2,
-        o:Math.random()*0.28+0.08
-      });
-    }
-  }
-
-  var lastTime=0;
-  function draw(t){
-    if(!lastTime)lastTime=t;
-    var delta=t-lastTime;
-    lastTime=t;
-
-    ctx.clearRect(0,0,W,H);
-
-    for(var i=0;i<flakes.length;i++){
-      var f=flakes[i];
-      f.y+=f.v*(delta/16);
-      f.x+=Math.sin(t*0.0005*f.s+f.p)*0.15;
-
-      if(f.y>H+4){
-        f.y=-4;
-        f.x=Math.random()*W;
-      }
-      if(f.x<-4)f.x=W+4;
-      if(f.x>W+4)f.x=-4;
-
-      ctx.beginPath();
-      ctx.arc(f.x,f.y,f.r,0,Math.PI*2);
-      ctx.fillStyle='rgba(255,255,255,'+f.o.toFixed(3)+')';
-      ctx.fill();
-    }
-    animId=requestAnimationFrame(draw);
-  }
-
-  resize();
-  window.addEventListener('resize',resize);
-  initSnow();
-  animId=requestAnimationFrame(draw);
-
-  document.addEventListener('visibilitychange',function(){
-    if(document.hidden){
-      if(animId){
-        cancelAnimationFrame(animId);
-        animId=null;
-      }
-    }else{
-      if(!animId){
-        animId=requestAnimationFrame(draw);
-      }
-    }
-  });
-})();
-</script>
 </body>
 </html>
