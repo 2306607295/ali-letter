@@ -225,5 +225,34 @@ body{
   </footer>
 </div>
 
+
+<!-- 背景音乐 -->
+<audio id="bgm" loop muted style="display:none;">
+  <source src="bgm.mp3" type="audio/mpeg">
+</audio>
+<script>
+(function(){
+  'use strict';
+  var audio=document.getElementById('bgm');
+  if(!audio) return;
+  function start(){
+    audio.muted=false;
+    var p=audio.play();
+    if(p&&p.catch) p.catch(function(){});
+  }
+  function tryAuto(){
+    var p=audio.play();
+    if(p===undefined) return;
+    p.then(function(){ setTimeout(function(){ audio.muted=false; },500); })
+     .catch(function(){
+       document.addEventListener('click',start);
+       document.addEventListener('touchstart',start);
+     });
+  }
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',tryAuto);
+  } else { tryAuto(); }
+})();
+</script>
 </body>
 </html>

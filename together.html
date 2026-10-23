@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="相守 · 连世疆与卫上黎">
-<title>相守 · 连世疆与卫上黎</title>
+<meta name="description" content="此生相守 · 连世疆与卫上黎">
+<title>此生相守 · 连世疆与卫上黎</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%230e1116'/%3E%3Ctext x='16' y='23' font-size='20' text-anchor='middle' fill='%23b8493a' font-family='serif'%3E连%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://miaoda.feishu.cn" crossorigin>
 <link rel="dns-prefetch" href="https://miaoda.feishu.cn">
@@ -169,7 +169,8 @@ body{
       往后余生，风雪是你<br>
       平淡是你，清贫是你<br>
       荣华是你，心底温柔是你<br>
-      目光所至，也是你
+      目光所至，也是你<br>
+      <small style="opacity:.72">而我这一生，只追你一人</small>
     </p>
   </div>
 </header>
@@ -201,7 +202,17 @@ body{
       </div>
       <div class="promise-item">
         <p class="promise-text">
-          <em>我承诺</em>，此生不负你，不辜负你，不让你再含恨，不让你再独自一人面对风雨。
+          <em>我承诺</em>，这一世不替你做决定。你要走东华，我便送你到东华；你要留下，我便留在你身边。
+        </p>
+      </div>
+      <div class="promise-item">
+        <p class="promise-text">
+          <em>我承诺</em>，这一世绝不瞒你。前世我自作主张，以为自己把命交出去便是护你周全——我错了。今生凡我有所作为，必先同你说。
+        </p>
+      </div>
+      <div class="promise-item">
+        <p class="promise-text">
+          <em>我承诺</em>，此生不负你，不辜负你。你要活，我便陪你活；你要我这条命，我便拿去。
         </p>
       </div>
       <div class="promise-item">
@@ -214,7 +225,10 @@ body{
 
   <div class="closing">
     <p class="closing-text">
-      阿黎，谢谢你愿意让我，陪你走下去。
+      阿黎，谢谢你愿意让我，陪你走下去。<br><br>
+      <em style="opacity:.8">只是这一世，我不想再替你认命。</em><br><br>
+      <span style="opacity:.8">上一世我替你选了，结果你含恨病逝在东华。<br>
+      这一世的路，你自己走——我走在你身侧。</span>
     </p>
     <p class="closing-text" style="font-size:clamp(22px,4vw,32px);color:var(--gold);margin-top:30px">
       此生相守，白首不离
@@ -325,6 +339,35 @@ body{
       }
     }
   });
+})();
+</script>
+
+<!-- 背景音乐 -->
+<audio id="bgm" loop muted style="display:none;">
+  <source src="bgm.mp3" type="audio/mpeg">
+</audio>
+<script>
+(function(){
+  'use strict';
+  var audio=document.getElementById('bgm');
+  if(!audio) return;
+  function start(){
+    audio.muted=false;
+    var p=audio.play();
+    if(p&&p.catch) p.catch(function(){});
+  }
+  function tryAuto(){
+    var p=audio.play();
+    if(p===undefined) return;
+    p.then(function(){ setTimeout(function(){ audio.muted=false; },500); })
+     .catch(function(){
+       document.addEventListener('click',start);
+       document.addEventListener('touchstart',start);
+     });
+  }
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',tryAuto);
+  } else { tryAuto(); }
 })();
 </script>
 </body>
